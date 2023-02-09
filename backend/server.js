@@ -16,12 +16,14 @@ const User = require('./models/User');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const imageRoutes = require('./routes/imageRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);
+app.use('/orders', orderRoutes);
 app.use('/images', imageRoutes);
 //paypal
 // app.get('/a[i/keys/paypal', (req, res) => {
@@ -39,7 +41,7 @@ app.post('/create-payment', async(req, res)=> {
       });
       res.status(200).json(paymentIntent)
     } catch (e) {
-      console.log("dwdwdwd", e.message);
+      // console.log("dwdwdwd", e.message);
       res.status(400).json(e.message);
      }
   })
