@@ -16,7 +16,6 @@ function OrdersPage() {
             .get(`/users/${user._id}/orders`)
             .then(({ data }) => {
                 setLoading(false);
-                console.log("irders", { orders });
                 setOrders(data);
             })
             .catch((e) => {

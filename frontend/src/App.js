@@ -10,8 +10,8 @@ import NewProduct from './pages/NewProduct';
 import ProductPage from './pages/ProductPage';
 import CategoryPage from './pages/CategoryPage';
 import ScrollToTop from './components/ScrollToTop';
-import CartPage from './pages/CartPage';
 import OrdersPage from './pages/OrdersPage';
+import CartPage from './pages/CartPage';
 
 function App() {
 
