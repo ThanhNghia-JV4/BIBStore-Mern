@@ -1,10 +1,10 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-//create the api
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+// create the api
 
 export const appApi = createApi({
     reducerPath: "appApi",
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080"}),
+    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080" }),
     endpoints: (builder) => ({
         signup: builder.mutation({
             query: (user) => ({
@@ -21,8 +21,7 @@ export const appApi = createApi({
                 body: user,
             }),
         }),
-
-        //creating product
+        // creating product
         createProduct: builder.mutation({
             query: (product) => ({
                 url: "/products",
@@ -30,6 +29,25 @@ export const appApi = createApi({
                 method: "POST",
             }),
         }),
+
+        deleteProduct: builder.mutation({
+            query: ({ product_id, user_id }) => ({
+                url: `/products/${product_id}`,
+                body: {
+                    user_id,
+                },
+                method: "DELETE",
+            }),
+        }),
+
+        updateProduct: builder.mutation({
+            query: (product) => ({
+                url: `/products/${product.id}`,
+                body: product,
+                method: "PATCH",
+            }),
+        }),
+
         // add to cart
         addToCart: builder.mutation({
             query: (cartInfo) => ({
@@ -46,6 +64,7 @@ export const appApi = createApi({
                 method: "POST",
             }),
         }),
+
         // increase cart
         increaseCartProduct: builder.mutation({
             query: (body) => ({
@@ -54,6 +73,7 @@ export const appApi = createApi({
                 method: "POST",
             }),
         }),
+
         // decrease cart
         decreaseCartProduct: builder.mutation({
             query: (body) => ({
@@ -74,8 +94,8 @@ export const appApi = createApi({
 });
 
 export const {
-    useLoginMutation,
     useSignupMutation,
+    useLoginMutation,
     useCreateProductMutation,
     useAddToCartMutation,
     useRemoveFromCartMutation,

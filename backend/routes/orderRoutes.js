@@ -7,7 +7,6 @@ const User = require('../models/User');
 
 router.post('/', async(req, res)=> {
   const io = req.app.get('socketio');
-  console.log("ioio", io);
   const {userId, cart, country, address} = req.body;
   try {
     const user = await User.findById(userId);
@@ -24,7 +23,6 @@ router.post('/', async(req, res)=> {
     res.status(200).json(user)
 
   } catch (e) {
-    console.log("erererere", e);
     res.status(400).json(e.message)
   }
 })

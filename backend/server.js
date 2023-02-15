@@ -8,8 +8,8 @@ require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
 const {Server} = require('socket.io');
 const io = new Server(server, {
-    cors: '*',
-    method: '*'
+    cors: 'http://localhost:3001',
+    method: ['GET', 'POST', 'PATCH', 'DELETE'],
 });
 
 const User = require('./models/User');
