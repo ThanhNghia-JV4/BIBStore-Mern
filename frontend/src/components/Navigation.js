@@ -33,7 +33,7 @@ function Navigation() {
         <Navbar bg="light" expand="lg">
             <Container>
                 <LinkContainer to="/">
-                    <Navbar.Brand>Ecomern</Navbar.Brand>
+                    <Navbar.Brand>BIB Store</Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

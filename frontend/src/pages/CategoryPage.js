@@ -6,6 +6,8 @@ import Loading from "../components/Loading";
 import ProductPreview from "../components/ProductPreview";
 import "./CategoryPage.css";
 import Pagination from "../components/Pagination";
+
+
 function CategoryPage() {
     const { category } = useParams();
     const [loading, setLoading] = useState(false);

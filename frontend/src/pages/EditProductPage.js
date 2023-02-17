@@ -99,10 +99,12 @@ function EditProductPage() {
                                 <option disabled selected>
                                     -- Select One --
                                 </option>
-                                <option value="technology">technology</option>
-                                <option value="tablets">tablets</option>
-                                <option value="phones">phones</option>
-                                <option value="laptops">laptops</option>
+                                <option value="iot solutions">IoT Solutions</option>
+                                <option value="iot devices">IoT Devices</option>
+                                <option value="iot connectivity">IoT Connectivity</option>
+                                <option value="lorawan gateways">LoRaWAN Gateways</option>
+                                <option value="iot platforms">IoT Platforms</option>
+                                <option value="iot accessories">IoT Accessories</option>
                             </Form.Select>
                         </Form.Group>
 
