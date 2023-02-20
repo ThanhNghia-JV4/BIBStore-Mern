@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Badge, Button, Modal, Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import axios from "../axios";
 import Loading from "./Loading";
 import Pagination from "./Pagination";
+import html2canvas from "html2canvas";
 
 function OrdersAdminPage() {
     const [orders, setOrders] = useState([]);
@@ -11,8 +12,31 @@ function OrdersAdminPage() {
     const products = useSelector((state) => state.products);
     const [orderToShow, setOrderToShow] = useState([]);
     const [show, setShow] = useState(false);
+    const ep = useRef(null)
 
     const handleClose = () => setShow(false);
+
+    const exportAsImage = async (element, imageFileName) => {
+        const canvas = await html2canvas(element);
+        const image = canvas.toDataURL("image/png", 1.0);
+        // download the image
+        downloadImage(image, imageFileName);
+    };
+
+
+    const downloadImage = (blob, fileName) => {
+        const fakeLink = window.document.createElement("a");
+        fakeLink.style = "display:none;";
+        fakeLink.download = fileName;
+
+        fakeLink.href = blob;
+
+        document.body.appendChild(fakeLink);
+        fakeLink.click();
+        document.body.removeChild(fakeLink);
+
+        fakeLink.remove();
+    };
 
     function markShipped(orderId, ownerId) {
         axios
@@ -21,7 +45,9 @@ function OrdersAdminPage() {
             .catch((e) => console.log(e));
     }
 
-    function showOrder(productsObj) {
+    function showOrder(order) {
+        const productsObj = order.products
+        console.log("kjksfjsk", order);
         let productsToShow = products.filter((product) => productsObj[product._id]);
         productsToShow = productsToShow.map((product) => {
             const productCopy = { ...product };
@@ -29,9 +55,9 @@ function OrdersAdminPage() {
             delete productCopy.description;
             return productCopy;
         });
-        console.log(productsToShow);
+        console.log({productsToShow});
         setShow(true);
-        setOrderToShow(productsToShow);
+        setOrderToShow({order: order, products: productsToShow});
     }
 
     useEffect(() => {
@@ -73,13 +99,15 @@ function OrdersAdminPage() {
                     )}
                 </td>
                 <td>
-                    <span style={{ cursor: "pointer" }} onClick={() => showOrder(products)}>
+                    <span style={{ cursor: "pointer" }} onClick={() => showOrder({userName: owner?.name, address, products})}>
                         View order <i className="fa fa-eye"></i>
                     </span>
                 </td>
             </tr>
         );
     }
+
+
 
     return (
         <>
@@ -102,19 +130,27 @@ function OrdersAdminPage() {
                 <Modal.Header closeButton>
                     <Modal.Title>Order details</Modal.Title>
                 </Modal.Header>
-                {orderToShow.map((order) => (
-                    <div className="order-details__container d-flex justify-content-around py-2">
-                        <img src={order.pictures[0].url} style={{ maxWidth: 100, height: 100, objectFit: "cover" }} />
-                        <p>
-                            <span>{order.count} x </span> {order.name}
-                        </p>
-                        <p>Price: ${Number(order.price) * order.count}</p>
-                    </div>
-                ))}
+                <div ref={ep}>
+                    {orderToShow?.products?.map((order) => (
+                        <div className="order-details__container d-flex justify-content-around py-2">
+                            <img src={order.pictures[0].url} style={{ maxWidth: 100, height: 100, objectFit: "cover" }} />
+                            <p>
+                                <span>{order.count} x </span> {order.name}
+                            </p>
+                            <p>Price: ${Number(order.price) * order.count}</p>
+                        </div>
+                    ))}
+                    <p className="order-details__container d-flex justify-content-around py-2">Address: {orderToShow?.order?.address}</p>
+                    <p className="order-details__container d-flex justify-content-around py-2">Client name: {orderToShow?.order?.userName}</p>
+                </div>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
+                    <Button onClick={() => exportAsImage(ep.current, "test")}>
+                        Export
+                    </Button>
+
                 </Modal.Footer>
             </Modal>
         </>

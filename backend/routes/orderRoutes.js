@@ -50,9 +50,9 @@ router.patch('/:id/mark-shipped', async(req, res)=> {
     await Order.findByIdAndUpdate(id, {status: 'shipped'});
     const orders = await Order.find().populate('owner', ['email', 'name']);
     const notification = {status: 'unread', message: `Order ${id} shipped with success`, time: new Date()};
-    io.sockets.emit("notification", notification, ownerId);
     user.notifications.push(notification);
     await user.save();
+    io.sockets.emit("notification", notification, ownerId);
     res.status(200).json(orders)
   } catch (e) {
     res.status(400).json(e.message);
