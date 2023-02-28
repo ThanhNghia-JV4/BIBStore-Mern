@@ -19,6 +19,10 @@ const ProductSchema = mongoose.Schema({
     pictures: {
         type: Array,
         required: true
+    },
+    link: {
+        type: String,
+        required: [true, "Can't be blank"]
     }
 }, {minimize: false});
 

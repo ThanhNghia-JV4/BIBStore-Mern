@@ -14,11 +14,11 @@ import ToastMessage from "../components/ToastMessage";
 
 function ProductPage() {
 
-    const {id} = useParams();
+    const { id } = useParams();
     const user = useSelector(state => state.user);
     const [product, setProduct] = useState(null);
     const [similar, setSimilar] = useState(null);
-    const [addToCart, {isSuccess}] = useAddToCartMutation();
+    const [addToCart, { isSuccess }] = useAddToCartMutation();
 
     const handleDragStart = (e) => e.preventDefault();
     useEffect(() => {
@@ -29,8 +29,8 @@ function ProductPage() {
     }, [id]);
 
     //const images = product.pictures.map((picture) => <img className="product__carousel--image" src={picture.url} onDragStart={handleDragStart} />);
-    
-    if(!product){
+
+    if (!product) {
         return <Loading />
     }
 
@@ -42,7 +42,7 @@ function ProductPage() {
     const images = product.pictures.map((picture) => <img className="product__carousel--image" src={picture.url} onDragStart={handleDragStart} />);
 
     let similarProducts = [];
-    if(similar){
+    if (similar) {
         similarProducts = similar.map((product, idx) => (
             <div className='item' data-value={idx}>
                 <SimilarProduct {...product} />
@@ -51,7 +51,7 @@ function ProductPage() {
     }
 
     return (
-        <Container className='pt-4' style={{position: 'relative'}}>
+        <Container className='pt-4' style={{ position: 'relative' }}>
             <Row>
                 <Col lg={6}>
                     <AliceCarousel mouseTracking items={images} controlsStrategy='alternate'>
@@ -64,12 +64,12 @@ function ProductPage() {
                         <Badge bg='primary'>{product.category}</Badge>
                     </p>
                     <p className='product__price'>${product.price}</p>
-                    <p style={{textAlign: 'justify'}} className='py-3'>
+                    <p style={{ textAlign: 'justify' }} className='py-3'>
                         <strong>Description: </strong> {product.description}
                     </p>
                     {user && !user.isAdmin && (
-                        <ButtonGroup style={{width: '90%'}}>
-                            <Form.Select size='lg' style={{width: '40%', borderRadius: '0'}}>
+                        <ButtonGroup style={{ width: '90%' }}>
+                            <Form.Select size='lg' style={{ width: '40%', borderRadius: '0' }}>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -81,7 +81,7 @@ function ProductPage() {
                             </Button>
                         </ButtonGroup>
                     )}
-                    {user && user.isAdmin &&(
+                    {user && user.isAdmin && (
                         <LinkContainer to={`/product/${product._id}/edit`}>
                             <Button size='lg'>Edit Product</Button>
                         </LinkContainer>
@@ -89,15 +89,16 @@ function ProductPage() {
                     {isSuccess && <ToastMessage bg="info" title="Added to cart" body={`${product.name} is in your cart`} />}
                 </Col>
             </Row>
+            <iframe width="560" height="315" src={product.link} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <div className='my-4'>
                 <h2>Similar Products</h2>
                 <div className='d-flex justify-content-center align-items-center flex-wrap'>
                     <AliceCarousel mouseTracking items={similarProducts} responsive={responsive} controlsStrategy='alternate' />
                 </div>
             </div>
-        </Container> 
+        </Container>
     )
-   
+
 }
 
 export default ProductPage

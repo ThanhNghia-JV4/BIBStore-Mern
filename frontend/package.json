@@ -13,6 +13,7 @@
     "axios": "^1.2.2",
     "bootstrap": "^5.2.3",
     "html2canvas": "^1.4.1",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.7.0",
     "react-bootstrap": "^2.7.0",

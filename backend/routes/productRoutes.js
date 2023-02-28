@@ -17,8 +17,8 @@ router.get('/', async(req, res)=> {
 //create product
 router.post('/', async(req, res)=> {
   try {
-    const {name, description, price, category, images: pictures} = req.body;
-    const product = await Product.create({name, description, price, category, pictures});
+    const {name, description, price, category, images: pictures, link} = req.body;
+    const product = await Product.create({name, description, price, category, pictures, link});
     const products = await Product.find();
     res.status(201).json(products);
   } catch (e) {

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import { logout, resetNotifications } from "../features/userSlice";
 import "./Navigation.css";
+import moment from "moment";
 
 function Navigation() {
     const user = useSelector((state) => state.user);
@@ -102,7 +103,7 @@ function Navigation() {
                         <p className={`notification-${notification.status}`}>
                             {notification.message}
                             <br />
-                            <span>{notification.time.split("T")[0] + " " + notification.time.split("T")[1]}</span>
+                            <span>{new moment(notification.time).format('MMMM Do YYYY, h:mm:ss')}</span>
                         </p>
                     ))
                 ) : (
