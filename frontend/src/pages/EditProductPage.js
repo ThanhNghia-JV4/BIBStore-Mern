@@ -10,6 +10,7 @@ function EditProductPage() {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
+    const [link, setLink] = useState("");
     const [category, setCategory] = useState("");
     const [images, setImages] = useState([]);
     const [imgToRemove, setImgToRemove] = useState(null);
@@ -91,6 +92,11 @@ function EditProductPage() {
                         <Form.Group className="mb-3">
                             <Form.Label>Price($)</Form.Label>
                             <Form.Control type="number" placeholder="Price ($)" value={price} required onChange={(e) => setPrice(e.target.value)} />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3">
+                            <Form.Label>Link</Form.Label>
+                            <Form.Control type="text" placeholder="link" value={link} required onChange={(e) => setLink(e.target.value)} />
                         </Form.Group>
 
                         <Form.Group className="mb-3" onChange={(e) => setCategory(e.target.value)}>
