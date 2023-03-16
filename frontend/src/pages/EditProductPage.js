@@ -27,6 +27,7 @@ function EditProductPage() {
                 setCategory(product.category);
                 setImages(product.pictures);
                 setPrice(product.price);
+                setLink(product.link);
             })
             .catch((e) => console.log(e));
     }, [id]);
@@ -44,10 +45,10 @@ function EditProductPage() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (!name || !description || !price || !category || !images.length) {
+        if (!name || !description || !price || !category || !images.length || !link) {
             return alert("Please fill out all the fields");
         }
-        updateProduct({ id, name, description, price, category, images }).then(({ data }) => {
+        updateProduct({ id, name, description, price, category, images, link }).then(({ data }) => {
             if (data.length > 0) {
                 setTimeout(() => {
                     navigate("/");

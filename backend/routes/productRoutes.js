@@ -32,8 +32,8 @@ router.post('/', async(req, res)=> {
 router.patch('/:id', async(req, res)=> {
   const {id} = req.params;
   try {
-    const {name, description, price, category, images: pictures} = req.body;
-    const product = await Product.findByIdAndUpdate(id, {name, description, price, category, pictures});
+    const {name, description, price, category, images: pictures, link} = req.body;
+    const product = await Product.findByIdAndUpdate(id, {name, description, price, category, pictures, link});
     const products = await Product.find();
     res.status(200).json(products);
   } catch (e) {
