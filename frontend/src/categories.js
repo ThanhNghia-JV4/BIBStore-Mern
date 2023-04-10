@@ -1,28 +1,29 @@
 const categories = [
     {
         name: "IoT Solutions",
-        img: "https://images.unsplash.com/photo-1518997554305-5eea2f04e384?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+        // img: "https://images.unsplash.com/photo-1518997554305-5eea2f04e384?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+        img: "https://i.imgur.com/Xe7bQBZ.jpg"
     },
     {
         name: "IoT Devices",
-        img: "https://images.unsplash.com/photo-1464380573004-8ca85a08751a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cGhvbmV8ZW58MHx8MHx3aGl0ZXw%3D&auto=format&fit=crop&w=800&q=60",
+        img: "https://i.imgur.com/piOsSSn.jpg"
     },
 
     { 
         name: "IoT Connectivity", 
-        img: "https://i.imgur.com/moKFenw.png" 
+        img: "https://i.imgur.com/MoFCaKk.jpg" 
     },
     { 
         name: "LoRaWAN Gateways",
-        img: "https://images.unsplash.com/photo-1575909812264-6902b55846ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+        img: "https://i.imgur.com/X2CgNhX.jpg"
     },
     { 
         name: "IoT Platforms",
-        img: "https://images.unsplash.com/photo-1575909812264-6902b55846ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+        img: "https://i.imgur.com/ZNv5C4H.jpg"
     },
     { 
         name: "IoT Accessories",
-        img: "https://images.unsplash.com/photo-1575909812264-6902b55846ad?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+        img: "https://i.imgur.com/PNhkKh0.jpg"
     },
 ];
 

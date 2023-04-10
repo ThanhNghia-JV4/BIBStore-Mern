@@ -21,7 +21,7 @@ function Home() {
 
   return (
     <div>
-      <img src="https://uphinh.vn/images/2023/02/18/61d9a0f057f63a774bb7b6cb67f8f863.png" className="home-banner"/>
+      <img src="https://uphinh.vn/images/2023/02/18/61d9a0f057f63a774bb7b6cb67f8f863.png" className="home-banner rounded-xl"/>
       <div className="featured-products-container container mt-4">
         <h2>Last products</h2>
         {/* last products here */}
@@ -39,7 +39,8 @@ function Home() {
       </div>
       {/* sale banner */}
       <div className="sale__banner--container mt-4">
-        <img src="https://res.cloudinary.com/learn-code-10/image/upload/v1654093280/xkia6f13xxlk5xvvb5ed.png" />
+        {/* <img src="https://res.cloudinary.com/learn-code-10/image/upload/v1654093280/xkia6f13xxlk5xvvb5ed.png" /> */}
+        <img  src="https://i.imgur.com/3IvTZ6T.png" />
       </div>
       <div className="recent-products-container container mt-4">
         <h2>Categories</h2>
