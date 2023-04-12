@@ -17,6 +17,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import EditProductPage from './pages/EditProductPage';
 import { io } from 'socket.io-client';
 import { addNotification } from "./features/userSlice";
+import Footer from './components/Footer';
 
 function App() {
 
@@ -34,7 +35,7 @@ function App() {
     //h
     socket.off("new-order").on("new-order", (msgObj) => {
       if (user.isAdmin) {
-          dispatch(addNotification(msgObj));
+        dispatch(addNotification(msgObj));
       }
     });
   }, []);
@@ -47,11 +48,11 @@ function App() {
         <Routes>
           <Route index element={<Home />} />
           {!user && (<>
-            <Route path='/login' element={<Login />}/>
-            <Route path='/signup' element={<Signup />}/>
+            <Route path='/login' element={<Login />} />
+            <Route path='/signup' element={<Signup />} />
           </>
           )}
-          
+
           {user && (
             <>
               <Route path="/cart" element={<CartPage />} />
@@ -69,8 +70,9 @@ function App() {
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/category/:category" element={<CategoryPage />} />
           <Route path='/new-product' element={<NewProduct />} />
-          <Route path='*' element={<Home />}/>
+          <Route path='*' element={<Home />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

@@ -41,6 +41,10 @@ function ProductPage() {
     };
     const images = product.pictures.map((picture) => <img className="product__carousel--image" src={picture.url} onDragStart={handleDragStart} />);
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
     let similarProducts = [];
     if (similar) {
         similarProducts = similar.map((product, idx) => (
@@ -63,7 +67,7 @@ function ProductPage() {
                     <p>
                         <Badge bg='primary'>{product.category}</Badge>
                     </p>
-                    <p className='product__price'>${product.price}</p>
+                    <p className='product__price'>${numberWithCommas(product.price)}</p>
                     <p style={{ textAlign: 'justify' }} className='py-3'>
                         <strong>Description: </strong> {product.description}
                     </p>

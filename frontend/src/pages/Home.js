@@ -21,7 +21,8 @@ function Home() {
 
   return (
     <div>
-      <img src="https://uphinh.vn/images/2023/02/18/61d9a0f057f63a774bb7b6cb67f8f863.png" className="home-banner rounded-xl"/>
+      {/* <img src="https://uphinh.vn/images/2023/02/18/61d9a0f057f63a774bb7b6cb67f8f863.png" className="home-banner"/> */}
+      <img src="https://i.imgur.com/LAoXDuf.png" className="home-banner"/>
       <div className="featured-products-container container mt-4">
         <h2>Last products</h2>
         {/* last products here */}
